@@ -34,22 +34,4 @@ object MStyle {
             background = background
         )
     }
-
-    @Composable
-    fun SurfaceLayer(
-        modifier:Modifier = Modifier,
-        border:BorderStroke = BorderStroke(1.dp, Color.Black),
-        color: Color = Color.Transparent,
-        elevation:Dp = 1.dp,
-        content:@Composable ()-> Unit
-    ) {
-        Surface(
-            modifier = modifier,
-            border = border,
-            elevation = elevation,
-            color = color
-        ) {
-            content()
-        }
-    }
 }
