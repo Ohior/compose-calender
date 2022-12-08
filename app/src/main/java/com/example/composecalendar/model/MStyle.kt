@@ -22,23 +22,25 @@ object MStyle {
         fontFamily: FontFamily = FontFamily.SansSerif,
         fontWeight: FontWeight = FontWeight.SemiBold,
         textAlign: TextAlign = TextAlign.Center,
-        color: Color = Color.Cyan
+        color: Color = Color.Red,
+        background: Color = Color.Transparent,
     ): TextStyle {
         return TextStyle(
             fontSize = fontSize,
             fontFamily = fontFamily,
             fontWeight = fontWeight,
             textAlign = textAlign,
-            color = color
+            color = color,
+            background = background
         )
     }
 
     @Composable
     fun SurfaceLayer(
         modifier:Modifier = Modifier,
-        border:BorderStroke = BorderStroke(2.dp, Color.Black),
+        border:BorderStroke = BorderStroke(1.dp, Color.Black),
         color: Color = Color.Transparent,
-        elevation:Dp = 3.dp,
+        elevation:Dp = 1.dp,
         content:@Composable ()-> Unit
     ) {
         Surface(
