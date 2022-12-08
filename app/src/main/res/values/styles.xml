@@ -1,0 +1,17 @@
+<resources>
+
+    <style name="Widget.ComposeCalendar.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.ComposeCalendar.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="calendar_style" parent="Theme.ComposeCalendar">
+        <item name="android:elevation">3.dp</item>
+        <item name="android:background">@color/light_blue_50</item>
+    </style>
+</resources>
