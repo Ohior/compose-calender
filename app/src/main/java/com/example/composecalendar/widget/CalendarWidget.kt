@@ -1,5 +1,6 @@
 package com.example.composecalendar.widget
 
+import android.text.format.DateFormat
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -15,8 +16,6 @@ import androidx.glance.text.TextAlign
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.example.comp_calendar.utils.CompCalendar
-import com.example.composecalendar.utils.Const
-import com.example.composecalendar.utils.Tools
 import java.util.*
 
 
@@ -32,12 +31,12 @@ class CalendarWidget : GlanceAppWidget() {
             daysOfWeek.forEach { calWeek ->
                 Text(
                     text = calWeek,
-                    modifier = GlanceModifier.wrapContentSize().padding(horizontal = 10.dp),
+                    modifier = GlanceModifier.wrapContentSize().padding(horizontal = 5.dp),
                     style = TextStyle(
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        color = ColorProvider(Color.Black),
+                        color = ColorProvider(Color.Yellow),
                     )
                 )
             }
@@ -62,7 +61,7 @@ class CalendarWidget : GlanceAppWidget() {
                             Box(
                                 modifier = GlanceModifier
                                     .wrapContentSize()
-                                    .padding(horizontal = 20.dp)
+                                    .padding(horizontal = 15.dp)
                             ) {}
                             if (CompCalendar.DAYS_OF_WEEKS[i] == CompCalendar.getDateRange().first.first()) {
                                 shouldWait = false
@@ -73,7 +72,7 @@ class CalendarWidget : GlanceAppWidget() {
                                 modifier = GlanceModifier
                                     .wrapContentSize()
                                     .background(color = if (dayNumber == count) Color.LightGray else Color.Transparent)
-                                    .padding(horizontal = 15.dp)
+                                    .padding(horizontal = 10.dp)
                             ) {
                                 Text(
                                     text = if (count < 10) "0$count" else count.toString(),
@@ -81,7 +80,7 @@ class CalendarWidget : GlanceAppWidget() {
                                         fontSize = 15.sp,
                                         fontWeight = FontWeight.Bold,
                                         textAlign = TextAlign.Center,
-                                        color = ColorProvider(Color.Black),
+                                        color = ColorProvider(Color.Yellow),
                                     )
                                 )
                             }
@@ -95,10 +94,27 @@ class CalendarWidget : GlanceAppWidget() {
 
     @Composable
     override fun Content() {
-        Column {
+        Column(
+            modifier = GlanceModifier.wrapContentSize()
+        ) {
+            CalendarWidgetMonth()
             CalendarWidgetWeek()
             CalendarWidgetDays()
         }
+    }
+
+    @Composable
+    private fun CalendarWidgetMonth() {
+        val monthName = DateFormat.format("MMMM", Date()) as String
+        Text(
+            modifier = GlanceModifier.fillMaxWidth(),
+            text = monthName,
+            style = TextStyle(
+                color = ColorProvider(Color.White),
+                fontSize = 15.sp,
+                textAlign = TextAlign.Center
+            )
+        )
     }
 
 }

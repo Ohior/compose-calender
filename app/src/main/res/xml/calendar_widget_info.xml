@@ -9,7 +9,7 @@
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:previewImage="@drawable/example_appwidget_preview"
-    android:updatePeriodMillis="86400000"
+    android:updatePeriodMillis="3600000"
     android:maxResizeWidth="1050dp"
     android:maxResizeHeight="787dp"
     android:targetCellWidth="5"
