@@ -14,6 +14,7 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextAlign
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
+import com.example.comp_calendar.utils.CompCalendar
 import com.example.composecalendar.utils.Const
 import com.example.composecalendar.utils.Tools
 import java.util.*
@@ -21,8 +22,8 @@ import java.util.*
 
 class CalendarWidget : GlanceAppWidget() {
     @Composable
-    fun CalendarWeek(
-        daysOfWeek: List<String> = Const.DAYS_OF_WEEKS
+    fun CalendarWidgetWeek(
+        daysOfWeek: List<String> = CompCalendar.DAYS_OF_WEEKS
     ) {
         Row(
             modifier = GlanceModifier.fillMaxWidth(),
@@ -44,30 +45,30 @@ class CalendarWidget : GlanceAppWidget() {
     }
 
     @Composable
-    fun CalendarDays() {
+    fun CalendarWidgetDays() {
         Column {
             val calendar = Calendar.getInstance()
-            val daysOfWeek = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+            val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
             val dayNumber = calendar.get(Calendar.DATE)
             var count = 1
             var shouldWait = true
-            while (count <= daysOfWeek) {
+            while (count <= daysInMonth) {
                 Row(
                     modifier = GlanceModifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.Horizontal.CenterHorizontally
                 ) {
-                    for (i in 0 until Const.DAYS_OF_WEEKS.size) {
+                    for (i in 0 until CompCalendar.DAYS_OF_WEEKS.size) {
                         if (shouldWait) {
                             Box(
                                 modifier = GlanceModifier
                                     .wrapContentSize()
                                     .padding(horizontal = 20.dp)
                             ) {}
-                            if (Const.DAYS_OF_WEEKS[i] == Tools.getDateRange().first.first()) {
+                            if (CompCalendar.DAYS_OF_WEEKS[i] == CompCalendar.getDateRange().first.first()) {
                                 shouldWait = false
                             }
                         }
-                        if (!shouldWait && count <= daysOfWeek) {
+                        if (!shouldWait && count <= daysInMonth) {
                             Box(
                                 modifier = GlanceModifier
                                     .wrapContentSize()
@@ -95,8 +96,8 @@ class CalendarWidget : GlanceAppWidget() {
     @Composable
     override fun Content() {
         Column {
-            CalendarWeek()
-            CalendarDays()
+            CalendarWidgetWeek()
+            CalendarWidgetDays()
         }
     }
 
