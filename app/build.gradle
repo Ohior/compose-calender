@@ -66,5 +66,6 @@ dependencies {
     implementation "androidx.glance:glance-appwidget:1.0.0-alpha05"
 
     // for CompCalendar
-    implementation 'com.github.Ohior:compose-calender:1.0'
+//    implementation 'com.github.Ohior:compose-calender:1.0'
+    implementation project(':comp_calendar')
 }
